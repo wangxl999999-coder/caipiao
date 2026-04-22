@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="header">
+    <view class="logo">🎱</view>
+    <view class="title">福彩助手</view>
+    <view class="version">v1.0.0</view>
+  </view>
+  
+  <view class="content card" wx:if="{{content}}">
+    <rich-text nodes="{{content}}"></rich-text>
+  </view>
+  
+  <view class="content card" wx:else>
+    <view class="intro">
+      <text class="intro-text">
+        福彩助手是一款专业的福彩查询应用，为您提供最新、最准确的福彩开奖信息查询服务。
+      </text>
+    </view>
+    
+    <view class="features">
+      <view class="feature-item">
+        <view class="feature-icon">📋</view>
+        <view class="feature-text">
+          <view class="feature-title">开奖查询</view>
+          <view class="feature-desc">支持双色球、七乐彩、22选5、3D、快乐8等多种福彩开奖查询</view>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <view class="feature-icon">📍</view>
+        <view class="feature-text">
+          <view class="feature-title">站点查询</view>
+          <view class="feature-desc">附近彩票站点一键查询，导航直达</view>
+        </view>
+      </view>
+      
+      <view class="feature-item">
+        <view class="feature-icon">📰</view>
+        <view class="feature-text">
+          <view class="feature-title">新闻资讯</view>
+          <view class="feature-desc">最新中奖信息、福彩动态及时推送</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="contact">
+      <view class="contact-title">联系我们</view>
+      <view class="contact-item">
+        <text>客服电话：400-xxx-xxxx</text>
+      </view>
+      <view class="contact-item">
+        <text>工作时间：9:00 - 18:00</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <text class="copyright">© 2024 福彩助手</text>
+    <text class="disclaimer">本应用仅供参考，开奖信息以官方公布为准</text>
+  </view>
+</view>

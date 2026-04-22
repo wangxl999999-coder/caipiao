@@ -1,0 +1,51 @@
+<view class="page">
+  <!-- 用户信息区域 -->
+  <view class="user-section" bindtap="goToLogin">
+    <view class="user-avatar" wx:if="{{isLoggedIn}}">
+      <image wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+      <text wx:else class="avatar-text">{{userInfo.nickname ? userInfo.nickname.substring(0,1) : '用'}}</text>
+    </view>
+    <view class="user-avatar guest" wx:else>
+      <text class="guest-icon">👤</text>
+    </view>
+    
+    <view class="user-info">
+      <view class="user-name" wx:if="{{isLoggedIn}}">
+        <text>{{userInfo.nickname || '福彩用户'}}</text>
+        <view class="user-tag" wx:if="{{userInfo.phone}}">
+          <text class="tag-text">{{userInfo.phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')}}</text>
+        </view>
+      </view>
+      <view class="user-name guest" wx:else>
+        <text>点击登录</text>
+      </view>
+      <view class="user-desc" wx:if="{{isLoggedIn}}">
+        <text>欢迎使用福彩助手</text>
+      </view>
+    </view>
+    
+    <view class="arrow" wx:if="{{!isLoggedIn}}"></view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section card">
+    <view class="menu-item" wx:for="{{menuList}}" wx:key="id" bindtap="goToPage" data-url="{{item.url}}">
+      <view class="menu-icon">{{item.icon}}</view>
+      <view class="menu-text">{{item.title}}</view>
+      <view class="arrow"></view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{isLoggedIn}}">
+    <view class="logout-btn" bindtap="logout">
+      <text>退出登录</text>
+    </view>
+  </view>
+
+  <!-- 版本信息 -->
+  <view class="footer">
+    <text class="version">福彩助手 v1.0.0</text>
+    <text class="copyright">© 2024 福彩助手</text>
+  </view>
+</view>

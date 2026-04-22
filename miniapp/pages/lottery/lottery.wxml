@@ -1,0 +1,63 @@
+<view class="page">
+  <view class="lottery-list">
+    <view class="lottery-item card" wx:for="{{lotteries}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <view class="lottery-header">
+        <view class="lottery-period">
+          <text class="period-label">第</text>
+          <text class="period-number">{{item.issue}}</text>
+          <text class="period-label">期</text>
+        </view>
+        <view class="lottery-date">{{item.issue_date}}</view>
+      </view>
+      
+      <view class="lottery-numbers">
+        <block wx:if="{{item.type === 'ssq'}}">
+          <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          <view class="ball-separator"></view>
+          <view class="lottery-ball ball-blue" wx:for="{{item.blue_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+        </block>
+        <block wx:elif="{{item.type === 'qcl'}}">
+          <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          <view class="ball-separator"></view>
+          <view class="lottery-ball ball-blue" wx:for="{{item.blue_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+        </block>
+        <block wx:elif="{{item.type === '22x5'}}">
+          <view class="lottery-ball ball-green" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+        </block>
+        <block wx:elif="{{item.type === '3d'}}">
+          <view class="lottery-ball ball-orange" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+        </block>
+        <block wx:elif="{{item.type === 'kl8'}}">
+          <view class="lottery-ball ball-purple" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+        </block>
+        <block wx:else>
+          <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+        </block>
+      </view>
+
+      <view class="lottery-prize" wx:if="{{item.prize_info}}">
+        <view class="prize-item">
+          <text class="prize-label">一等奖：</text>
+          <text class="prize-value">{{item.prize_info.first_prize || '--'}}</text>
+        </view>
+        <view class="prize-item">
+          <text class="prize-label">销售总额：</text>
+          <text class="prize-value">{{item.sales_amount || '--'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && lotteries.length > 0}}">
+    <text>没有更多了</text>
+  </view>
+
+  <view class="empty-state" wx:if="{{!loading && lotteries.length === 0}}">
+    <text class="empty-icon">📭</text>
+    <text class="empty-text">暂无开奖数据</text>
+  </view>
+</view>

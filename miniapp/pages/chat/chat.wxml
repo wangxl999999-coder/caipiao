@@ -1,0 +1,50 @@
+<view class="page">
+  <!-- 消息列表 -->
+  <scroll-view class="message-list" scroll-y="true" scroll-top="{{scrollTop}}">
+    <view class="messages">
+      <view class="message-item {{item.from}}" wx:for="{{messages}}" wx:key="id">
+        <view class="message-time" wx:if="{{item.showTime}}">
+          <text>{{formatTime(item.created_at)}}</text>
+        </view>
+        
+        <view class="message-content">
+          <!-- 客服消息 -->
+          <view class="avatar service" wx:if="{{item.from === 'service'}}">
+            <text class="avatar-icon">🤖</text>
+          </view>
+          
+          <view class="bubble {{item.from}}" wx:if="{{item.type === 'text'}}">
+            <text class="bubble-text">{{item.content}}</text>
+          </view>
+          
+          <!-- 用户消息 -->
+          <view class="avatar user" wx:if="{{item.from === 'user'}}">
+            <text class="avatar-icon">👤</text>
+          </view>
+        </view>
+        
+        <!-- 发送失败提示 -->
+        <view class="send-failed" wx:if="{{item.sendFailed}}">
+          <text class="failed-icon" bindtap="retrySend" data-id="{{item.id}}">🔄</text>
+          <text class="failed-text">发送失败，点击重试</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <view class="input-wrapper">
+      <input class="message-input" 
+        placeholder="请输入消息内容" 
+        value="{{inputContent}}" 
+        bindinput="inputChange"
+        bindfocus="inputFocus"
+        confirm-type="send"
+        bindconfirm="sendMessage"/>
+    </view>
+    <view class="send-btn {{inputContent.trim() ? 'active' : ''}}" bindtap="sendMessage">
+      <text>发送</text>
+    </view>
+  </view>
+</view>

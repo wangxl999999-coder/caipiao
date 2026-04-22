@@ -1,0 +1,91 @@
+<view class="page">
+  <!-- 轮播图 -->
+  <swiper class="banner" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#ffffff">
+    <block wx:for="{{banners}}" wx:key="id">
+      <swiper-item bindtap="goToNewsDetail" data-id="{{item.id}}">
+        <image class="banner-image" src="{{item.cover_image}}" mode="aspectFill"></image>
+        <view class="banner-title">{{item.title}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 快捷入口 -->
+  <view class="quick-menu">
+    <view class="menu-item" bindtap="goToStations">
+      <view class="menu-icon" style="background: linear-gradient(135deg, #e60012 0%, #ff4d4f 100%);">
+        <text class="iconfont">📍</text>
+      </view>
+      <view class="menu-text">附近站点</view>
+    </view>
+    <view class="menu-item" bindtap="goToRules">
+      <view class="menu-icon" style="background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);">
+        <text class="iconfont">📋</text>
+      </view>
+      <view class="menu-text">游戏规则</view>
+    </view>
+    <view class="menu-item" bindtap="goToNews">
+      <view class="menu-icon" style="background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);">
+        <text class="iconfont">📰</text>
+      </view>
+      <view class="menu-text">新闻资讯</view>
+    </view>
+  </view>
+
+  <!-- 彩种入口 -->
+  <view class="card">
+    <view class="card-header">
+      <view class="card-title">开奖查询</view>
+    </view>
+    <view class="card-body lottery-types">
+      <view class="type-item" wx:for="{{lotteryTypes}}" wx:key="type" bindtap="goToLottery" data-type="{{item.type}}" data-name="{{item.name}}">
+        <view class="type-icon" style="background-color: {{item.color}};">
+          <text class="iconfont">{{item.icon}}</text>
+        </view>
+        <view class="type-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最新开奖 -->
+  <view class="card">
+    <view class="card-header">
+      <view class="card-title">最新开奖</view>
+    </view>
+    <view class="lottery-list">
+      <view class="lottery-item" wx:for="{{latestLotteries}}" wx:key="id" bindtap="goToLotteryDetail" data-id="{{item.id}}">
+        <view class="lottery-header">
+          <view class="lottery-name" style="color: {{item.type_info.color}};">{{item.type_name}}</view>
+          <view class="lottery-time">{{item.issue_date}}</view>
+        </view>
+        <view class="lottery-info">
+          <view class="lottery-issue">第{{item.issue}}期</view>
+        </view>
+        <view class="lottery-numbers">
+          <block wx:if="{{item.type === 'ssq'}}">
+            <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+            <view class="ball-separator"></view>
+            <view class="lottery-ball ball-blue" wx:for="{{item.blue_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          </block>
+          <block wx:elif="{{item.type === 'qcl'}}">
+            <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+            <view class="ball-separator"></view>
+            <view class="lottery-ball ball-blue" wx:for="{{item.blue_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          </block>
+          <block wx:elif="{{item.type === '22x5'}}">
+            <view class="lottery-ball ball-green" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          </block>
+          <block wx:elif="{{item.type === '3d'}}">
+            <view class="lottery-ball ball-orange" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          </block>
+          <block wx:elif="{{item.type === 'kl8'}}">
+            <view class="lottery-ball ball-purple" wx:for="{{item.red_balls.slice(0,10)}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+            <view class="more-balls" wx:if="{{item.red_balls.length > 10}}">...</view>
+          </block>
+          <block wx:else>
+            <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

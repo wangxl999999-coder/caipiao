@@ -1,0 +1,166 @@
+.page {
+  padding-bottom: 20rpx;
+}
+
+/* 轮播图 */
+.banner {
+  width: 100%;
+  height: 340rpx;
+  position: relative;
+}
+
+.banner swiper-item {
+  position: relative;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+.banner-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 30rpx;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 快捷入口 */
+.quick-menu {
+  display: flex;
+  padding: 30rpx;
+  margin: 20rpx;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.menu-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.menu-icon .iconfont {
+  font-size: 44rpx;
+  color: #ffffff;
+}
+
+.menu-text {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+/* 彩种入口 */
+.lottery-types {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-item {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.type-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12rpx;
+}
+
+.type-icon .iconfont {
+  font-size: 40rpx;
+  color: #ffffff;
+}
+
+.type-name {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+/* 最新开奖 */
+.lottery-list {
+  padding: 0 30rpx;
+}
+
+.lottery-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.lottery-item:last-child {
+  border-bottom: none;
+}
+
+.lottery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+.lottery-name {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.lottery-time {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.lottery-info {
+  margin-bottom: 16rpx;
+}
+
+.lottery-issue {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.lottery-numbers {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ball-separator {
+  width: 2rpx;
+  height: 40rpx;
+  background-color: #e8e8e8;
+  margin: 0 20rpx;
+}
+
+.more-balls {
+  font-size: 32rpx;
+  color: #999999;
+  margin-left: 10rpx;
+}

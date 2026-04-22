@@ -1,0 +1,60 @@
+<view class="page">
+  <view class="location-tip" wx:if="{{!locationEnabled}}">
+    <view class="tip-icon">📍</view>
+    <view class="tip-text">请授权位置信息以查询附近站点</view>
+    <view class="tip-btn" bindtap="refreshLocation">重新授权</view>
+  </view>
+
+  <view class="station-list" wx:if="{{stations.length > 0}}">
+    <view class="station-item card" wx:for="{{stations}}" wx:key="id">
+      <view class="station-header">
+        <view class="station-name">{{item.name}}</view>
+        <view class="station-distance" wx:if="{{item.distanceText}}">
+          <text class="distance-text">{{item.distanceText}}</text>
+        </view>
+      </view>
+      
+      <view class="station-info">
+        <view class="info-item" wx:if="{{item.code}}">
+          <text class="info-label">站点编号：</text>
+          <text class="info-value">{{item.code}}</text>
+        </view>
+        <view class="info-item" wx:if="{{item.address}}">
+          <text class="info-label">详细地址：</text>
+          <text class="info-value">{{item.address}}</text>
+        </view>
+        <view class="info-item" wx:if="{{item.phone}}">
+          <text class="info-label">联系电话：</text>
+          <text class="info-value">{{item.phone}}</text>
+        </view>
+      </view>
+
+      <view class="station-actions">
+        <view class="action-btn action-primary" bindtap="openLocation" 
+          data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}"
+          data-name="{{item.name}}" data-address="{{item.address}}">
+          <text class="action-icon">🗺️</text>
+          <text class="action-text">导航</text>
+        </view>
+        <view class="action-btn action-secondary" bindtap="makePhoneCall" 
+          data-phone="{{item.phone}}" wx:if="{{item.phone}}">
+          <text class="action-icon">📞</text>
+          <text class="action-text">电话</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="no-more" wx:if="{{!hasMore && stations.length > 0}}">
+    <text>没有更多了</text>
+  </view>
+
+  <view class="empty-state" wx:if="{{!loading && stations.length === 0 && locationEnabled}}">
+    <text class="empty-icon">🏪</text>
+    <text class="empty-text">附近暂无彩票站点</text>
+  </view>
+</view>
