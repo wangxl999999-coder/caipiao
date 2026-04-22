@@ -24,7 +24,7 @@ Page({
     }
   },
 
-  onPullDownRefresh: function () () {
+  onPullDownRefresh: function () {
     this.setData({
       page: 1,
       stations: [],
@@ -35,7 +35,7 @@ Page({
     })
   },
 
-  onReachBottom: function () () {
+  onReachBottom: function () {
     if (this.data.hasMore && !this.data.loading) {
       this.setData({
         page: this.data.page + 1
@@ -44,11 +44,11 @@ Page({
     }
   },
 
-  init: function () () {
+  init: function () {
     this.checkLocationAndLoad()
   },
 
-  checkLocationAndLoad: async function () () {
+  checkLocationAndLoad: async function () {
     try {
       const res = await this.getLocation()
       this.setData({
@@ -66,7 +66,7 @@ Page({
     }
   },
 
-  getLocation: function () () {
+  getLocation: function () {
     return new Promise((resolve, reject) => {
       wx.getLocation({
         type: 'gcj02',
@@ -80,7 +80,7 @@ Page({
     })
   },
 
-  loadStations: async function () () {
+  loadStations: async function () {
     if (this.data.loading) return
     if (!this.data.latitude || !this.data.longitude) {
       showToast('请先授权位置信息')
@@ -113,7 +113,7 @@ Page({
           hasMore
         })
       }
-    } catch (error) () {
+    } catch (error) {
       console.error('加载站点数据失败:', error)
       showToast('加载失败')
     } finally {
@@ -122,7 +122,7 @@ Page({
     }
   },
 
-  openLocation: function (e) () {
+  openLocation: function (e) {
     const { latitude, longitude, name, address } = e.currentTarget.dataset
     if (latitude && longitude) {
       wx.openLocation({
@@ -137,7 +137,7 @@ Page({
     }
   },
 
-  makePhoneCall: function (e) () {
+  makePhoneCall: function (e) {
     const { phone } = e.currentTarget.dataset
     if (phone) {
       wx.makePhoneCall({
@@ -148,7 +148,7 @@ Page({
     }
   },
 
-  refreshLocation: function () () {
+  refreshLocation: function () {
     this.checkLocationAndLoad()
   }
 })

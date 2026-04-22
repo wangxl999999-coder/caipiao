@@ -46,6 +46,7 @@ Router::get('/news/detail/{id}', 'NewsController@getDetail');
 // 设置相关路由
 Router::get('/setting/about-us', 'SettingController@getAboutUs');
 Router::get('/setting/user-agreement', 'SettingController@getUserAgreement');
+Router::get('/setting/privacy-policy', 'SettingController@getPrivacyPolicy');
 Router::get('/setting/customer-service', 'SettingController@getCustomerService');
 
 // 聊天相关路由
