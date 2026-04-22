@@ -6,16 +6,12 @@
 return [
     'name' => '福彩助手API',
     'version' => '1.0.0',
-    'debug' => true,
-    'timezone' => 'Asia/Shanghai',
     
-    // JWT配置
     'jwt' => [
-        'secret' => 'caipiao_jwt_secret_key_2024',
-        'expire' => 7 * 24 * 3600, // 7天过期
+        'secret' => 'caipiao_jwt_secret_2024_very_long_key',
+        'expire' => 86400 * 7,
     ],
     
-    // 微信小程序配置
     'wechat' => [
         'miniapp' => [
             'app_id' => 'your_app_id',
@@ -23,17 +19,16 @@ return [
         ],
     ],
     
-    // 上传配置
-    'upload' => [
-        'path' => __DIR__ . '/../public/uploads/',
-        'url' => '/uploads/',
-        'max_size' => 10 * 1024 * 1024, // 10MB
-        'allowed_types' => ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+    'pagination' => [
+        'default_page_size' => 15,
+        'max_page_size' => 100,
     ],
     
-    // 分页配置
-    'pagination' => [
-        'default_page_size' => 10,
-        'max_page_size' => 100,
+    'lottery_types' => [
+        'ssq' => ['name' => '双色球', 'color' => '#e60012'],
+        'qcl' => ['name' => '七乐彩', 'color' => '#1890ff'],
+        '22x5' => ['name' => '22选5', 'color' => '#52c41a'],
+        '3d' => ['name' => '3D', 'color' => '#faad14'],
+        'kl8' => ['name' => '快乐8', 'color' => '#722ed1'],
     ],
 ];
