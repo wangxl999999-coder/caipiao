@@ -78,8 +78,8 @@
             <view class="lottery-ball ball-orange" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
           </block>
           <block wx:elif="{{item.type === 'kl8'}}">
-            <view class="lottery-ball ball-purple" wx:for="{{item.red_balls.slice(0,10)}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
-            <view class="more-balls" wx:if="{{item.red_balls.length > 10}}">...</view>
+            <view class="lottery-ball ball-purple" wx:for="{{item.display_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>
+            <view class="more-balls" wx:if="{{item.has_more_balls}}">...</view>
           </block>
           <block wx:else>
             <view class="lottery-ball ball-red" wx:for="{{item.red_balls}}" wx:key="index" wx:for-item="ball">{{ball}}</view>

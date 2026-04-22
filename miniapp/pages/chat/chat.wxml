@@ -4,7 +4,7 @@
     <view class="messages">
       <view class="message-item {{item.from}}" wx:for="{{messages}}" wx:key="id">
         <view class="message-time" wx:if="{{item.showTime}}">
-          <text>{{formatTime(item.created_at)}}</text>
+          <text>{{item.formattedTime}}</text>
         </view>
         
         <view class="message-content">
@@ -43,7 +43,7 @@
         confirm-type="send"
         bindconfirm="sendMessage"/>
     </view>
-    <view class="send-btn {{inputContent.trim() ? 'active' : ''}}" bindtap="sendMessage">
+    <view class="send-btn {{canSend ? 'active' : ''}}" bindtap="sendMessage">
       <text>发送</text>
     </view>
   </view>
