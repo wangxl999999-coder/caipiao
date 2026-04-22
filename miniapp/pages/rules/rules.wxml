@@ -1,0 +1,67 @@
+<view class="page">
+  <!-- 彩种标签 -->
+  <scroll-view class="tabs-scroll" scroll-x="true">
+    <view class="tabs">
+      <view class="tab-item {{activeType === item.type ? 'active' : ''}}" 
+        wx:for="{{rules}}" wx:key="type" 
+        bindtap="switchRule" data-type="{{item.type}}">
+        <text class="tab-text">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 规则内容 -->
+  <view class="rule-content" wx:if="{{currentRule}}">
+    <view class="rule-section card">
+      <view class="section-header">
+        <view class="section-icon">📅</view>
+        <view class="section-title">开奖时间</view>
+      </view>
+      <view class="section-body">
+        <text class="section-text">{{currentRule.draw_time || '暂无'}}</text>
+      </view>
+    </view>
+
+    <view class="rule-section card">
+      <view class="section-header">
+        <view class="section-icon">📺</view>
+        <view class="section-title">开奖栏目</view>
+      </view>
+      <view class="section-body">
+        <text class="section-text">{{currentRule.draw_channel || '暂无'}}</text>
+      </view>
+    </view>
+
+    <view class="rule-section card">
+      <view class="section-header">
+        <view class="section-icon">📋</view>
+        <view class="section-title">游戏规则</view>
+      </view>
+      <view class="section-body">
+        <view class="rule-text" wx:if="{{currentRule.rules}}">
+          <rich-text nodes="{{currentRule.rules}}"></rich-text>
+        </view>
+        <text class="section-text" wx:else>暂无规则说明</text>
+      </view>
+    </view>
+
+    <view class="rule-section card" wx:if="{{currentRule.prize_description}}">
+      <view class="section-header">
+        <view class="section-icon">💰</view>
+        <view class="section-title">奖级说明</view>
+      </view>
+      <view class="section-body">
+        <rich-text nodes="{{currentRule.prize_description}}"></rich-text>
+      </view>
+    </view>
+  </view>
+
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <view class="empty-state" wx:if="{{!loading && rules.length === 0}}">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无规则说明</text>
+  </view>
+</view>

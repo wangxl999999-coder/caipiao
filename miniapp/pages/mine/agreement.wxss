@@ -1,0 +1,60 @@
+.page {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.content {
+  height: 100vh;
+}
+
+.agreement-content {
+  margin: 20rpx;
+  padding: 30rpx;
+}
+
+.agreement-header {
+  text-align: center;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-bottom: 30rpx;
+}
+
+.agreement-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333333;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.agreement-date {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.agreement-body {
+  font-size: 28rpx;
+  line-height: 1.8;
+  color: #333333;
+}
+
+.section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.section-content {
+  color: #666666;
+  margin-bottom: 12rpx;
+  text-indent: 2em;
+}
+
+.section-content:last-child {
+  margin-bottom: 0;
+}

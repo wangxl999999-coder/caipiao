@@ -1,0 +1,98 @@
+<view class="page">
+  <scroll-view class="content" scroll-y="true">
+    <view class="agreement-content card">
+      <view class="agreement-header">
+        <text class="agreement-title">{{title}}</text>
+        <text class="agreement-date">更新日期：2024年1月1日</text>
+      </view>
+      
+      <view class="agreement-body" wx:if="{{content}}">
+        <rich-text nodes="{{content}}"></rich-text>
+      </view>
+      
+      <view class="agreement-body" wx:else>
+        <view class="section">
+          <view class="section-title">一、总则</view>
+          <view class="section-content">
+            <text>1.1 欢迎您使用福彩助手（以下简称"本应用"）。为使用本应用服务，您应当阅读并遵守《用户协议》（以下简称"本协议"）。请您务必审慎阅读、充分理解各条款内容，特别是免除或限制责任的相应条款。</text>
+          </view>
+          <view class="section-content">
+            <text>1.2 除非您已阅读并接受本协议所有条款，否则您无权使用本应用服务。您的任何使用本应用服务的行为即视为您已阅读并同意接受本协议的约束。</text>
+          </view>
+        </view>
+        
+        <view class="section">
+          <view class="section-title">二、服务说明</view>
+          <view class="section-content">
+            <text>2.1 本应用为用户提供福彩开奖信息查询、附近站点查询、游戏规则说明、新闻资讯等服务。</text>
+          </view>
+          <view class="section-content">
+            <text>2.2 本应用所展示的开奖信息仅供参考，实际开奖结果以官方公布为准。</text>
+          </view>
+        </view>
+        
+        <view class="section">
+          <view class="section-title">三、用户账号</view>
+          <view class="section-content">
+            <text>3.1 您在使用本应用服务时需要注册一个账号。账号应当使用手机号码绑定注册，请您使用尚未与本应用账号绑定的手机号码进行注册。</text>
+          </view>
+          <view class="section-content">
+            <text>3.2 您理解并承诺，您所设置的账号不得违反国家法律法规及平台规则，您的账号名称、头像和简介等注册信息中不得出现违法和不良信息。</text>
+          </view>
+        </view>
+        
+        <view class="section">
+          <view class="section-title">四、用户行为规范</view>
+          <view class="section-content">
+            <text>4.1 您在使用本应用服务过程中，必须遵守以下原则：</text>
+          </view>
+          <view class="section-content">
+            <text>（1）遵守中国有关的法律法规；</text>
+          </view>
+          <view class="section-content">
+            <text>（2）不得为任何非法目的而使用网络服务系统；</text>
+          </view>
+          <view class="section-content">
+            <text>（3）遵守所有与网络服务有关的网络协议、规定和程序；</text>
+          </view>
+        </view>
+        
+        <view class="section">
+          <view class="section-title">五、隐私保护</view>
+          <view class="section-content">
+            <text>5.1 保护用户隐私是本应用的一项基本政策，本应用保证不对外公开或向第三方提供用户的注册资料及用户在使用网络服务时存储在本应用的非公开内容，但下列情况除外：</text>
+          </view>
+          <view class="section-content">
+            <text>（1）事先获得用户的明确授权；</text>
+          </view>
+          <view class="section-content">
+            <text>（2）根据有关的法律法规要求；</text>
+          </view>
+          <view class="section-content">
+            <text>（3）按照相关政府主管部门的要求。</text>
+          </view>
+        </view>
+        
+        <view class="section">
+          <view class="section-title">六、免责声明</view>
+          <view class="section-content">
+            <text>6.1 本应用不保证服务不会中断，对服务的及时性、安全性、准确性不作担保。</text>
+          </view>
+          <view class="section-content">
+            <text>6.2 本应用所提供的开奖信息仅供参考，如因信息准确性造成任何损失，本应用不承担任何责任。</text>
+          </view>
+        </view>
+        
+        <view class="section">
+          <view class="section-title">七、协议修改</view>
+          <view class="section-content">
+            <text>7.1 本应用有权在必要时修改本协议条款。您可以在相关服务页面查阅最新版本的协议条款。</text>
+          </view>
+          <view class="section-content">
+            <text>7.2 本协议条款修改后，如果您继续使用本应用服务，即视为您已接受修改后的协议。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/lottery/lottery",
+    "pages/stations/stations",
+    "pages/rules/rules",
+    "pages/news/news",
+    "pages/login/login",
+    "pages/mine/mine",
+    "pages/chat/chat"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e60012",
+    "navigationBarTitleText": "福彩助手",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#e60012",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/images/tabbar/home.png",
+        "selectedIconPath": "assets/images/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/lottery/lottery",
+        "text": "开奖",
+        "iconPath": "assets/images/tabbar/lottery.png",
+        "selectedIconPath": "assets/images/tabbar/lottery-active.png"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "资讯",
+        "iconPath": "assets/images/tabbar/news.png",
+        "selectedIconPath": "assets/images/tabbar/news-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/images/tabbar/mine.png",
+        "selectedIconPath": "assets/images/tabbar/mine-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
