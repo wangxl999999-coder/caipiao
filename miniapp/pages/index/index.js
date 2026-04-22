@@ -68,8 +68,19 @@ Page({
     try {
       const res = await api.lottery.getLatest()
       if (res.code === 200) {
+        const lotteries = (res.data || []).map(item => {
+          const processedItem = { ...item }
+          if (item.type === 'kl8' && item.red_balls && item.red_balls.length > 10) {
+            processedItem.display_balls = item.red_balls.slice(0, 10)
+            processedItem.has_more_balls = item.red_balls.length > 10
+          } else {
+            processedItem.display_balls = item.red_balls
+            processedItem.has_more_balls = false
+          }
+          return processedItem
+        })
         this.setData({
-          latestLotteries: res.data || []
+          latestLotteries: lotteries
         })
       }
     } catch (error) {

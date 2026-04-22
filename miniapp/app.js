@@ -2,7 +2,7 @@ App({
   globalData: {
     userInfo: null,
     token: null,
-    apiBaseUrl: 'http://localhost/caipiao/api/public'
+    apiBaseUrl: 'http://caipiao.com/caipiao/api/public'
   },
 
   onLaunch: function () {

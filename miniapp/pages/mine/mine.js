@@ -46,8 +46,13 @@ Page({
     const token = wx.getStorageSync('token')
     const userInfo = wx.getStorageSync('userInfo')
     if (token && userInfo) {
+      const formattedUserInfo = {
+        ...userInfo,
+        maskedPhone: this.formatPhone(userInfo.phone),
+        avatarChar: this.getAvatarChar(userInfo.nickname)
+      }
       this.setData({
-        userInfo: userInfo,
+        userInfo: formattedUserInfo,
         isLoggedIn: true
       })
     } else {
@@ -56,6 +61,19 @@ Page({
         isLoggedIn: false
       })
     }
+  },
+
+  getAvatarChar: function (nickname) {
+    if (!nickname) return '用'
+    return nickname.charAt(0)
+  },
+
+  formatPhone: function (phone) {
+    if (!phone) return ''
+    if (phone.length >= 11) {
+      return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+    }
+    return phone
   },
 
   goToLogin: function () {

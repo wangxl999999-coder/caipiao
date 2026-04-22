@@ -6,6 +6,7 @@ Page({
   data: {
     messages: [],
     inputContent: '',
+    canSend: false,
     scrollTop: 0,
     sending: false,
     page: 1,
@@ -38,8 +39,9 @@ Page({
       from: 'service',
       created_at: new Date().toISOString()
     }
+    const processedMsg = this.processMessage(welcomeMsg, null)
     this.setData({
-      messages: [welcomeMsg]
+      messages: [processedMsg]
     })
   },
 
@@ -49,8 +51,12 @@ Page({
       if (res.code === 200) {
         const history = res.data || []
         if (history.length > 0) {
+          const processedHistory = history.reverse().map((msg, index, arr) => {
+            const prevMsg = index > 0 ? arr[index - 1] : null
+            return this.processMessage(msg, prevMsg)
+          })
           this.setData({
-            messages: [...history.reverse(), ...this.data.messages]
+            messages: [...processedHistory, ...this.data.messages]
           })
           this.scrollToBottom()
         }
@@ -61,8 +67,10 @@ Page({
   },
 
   inputChange: function (e) {
+    const value = e.detail.value
     this.setData({
-      inputContent: e.detail.value
+      inputContent: value,
+      canSend: value && value.trim().length > 0
     })
   },
 
@@ -82,6 +90,8 @@ Page({
       return
     }
 
+    const lastMsg = this.data.messages.length > 0 ? this.data.messages[this.data.messages.length - 1] : null
+    
     const userMsg = {
       id: Date.now().toString(),
       type: 'text',
@@ -90,9 +100,12 @@ Page({
       created_at: new Date().toISOString()
     }
 
+    const processedUserMsg = this.processMessage(userMsg, lastMsg)
+
     this.setData({
-      messages: [...this.data.messages, userMsg],
+      messages: [...this.data.messages, processedUserMsg],
       inputContent: '',
+      canSend: false,
       sending: true
     })
     
@@ -109,8 +122,10 @@ Page({
           created_at: new Date().toISOString()
         }
         
+        const processedReplyMsg = this.processMessage(replyMsg, this.data.messages[this.data.messages.length - 1])
+        
         this.setData({
-          messages: [...this.data.messages, replyMsg]
+          messages: [...this.data.messages, processedReplyMsg]
         })
         
         this.scrollToBottom()
@@ -145,6 +160,22 @@ Page({
         }
       })
       .exec()
+  },
+
+  processMessage: function (msg, prevMsg) {
+    const formattedMsg = { ...msg }
+    formattedMsg.formattedTime = this.formatTime(msg.created_at)
+    
+    if (!prevMsg) {
+      formattedMsg.showTime = true
+    } else {
+      const prevTime = new Date(prevMsg.created_at).getTime()
+      const currTime = new Date(msg.created_at).getTime()
+      const diffMinutes = (currTime - prevTime) / (1000 * 60)
+      formattedMsg.showTime = diffMinutes > 5
+    }
+    
+    return formattedMsg
   },
 
   formatTime: function (dateStr) {
