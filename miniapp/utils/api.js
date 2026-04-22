@@ -51,11 +51,11 @@ const request = (options) => {
 
 const api = {
   user: {
-    login: (code) => {
+    login: (data) => {
       return request({
         url: '/user/login',
         method: 'POST',
-        data: { code }
+        data
       })
     },
     
@@ -190,6 +190,13 @@ const api = {
     getUserAgreement: () => {
       return request({
         url: '/setting/user-agreement',
+        method: 'GET'
+      })
+    },
+    
+    getPrivacyPolicy: () => {
+      return request({
+        url: '/setting/privacy-policy',
         method: 'GET'
       })
     },

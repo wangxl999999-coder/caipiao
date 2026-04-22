@@ -41,6 +41,17 @@ class SettingController extends Controller
         }
     }
 
+    public function getPrivacyPolicy()
+    {
+        try {
+            $policy = $this->settingModel->getPrivacyPolicy();
+            
+            return $this->success($policy);
+        } catch (Exception $e) {
+            return $this->error('获取隐私政策失败: ' . $e->getMessage(), 500);
+        }
+    }
+
     public function getCustomerService()
     {
         try {

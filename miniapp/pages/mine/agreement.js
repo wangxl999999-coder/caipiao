@@ -36,7 +36,7 @@ Page({
       if (this.data.type === 'user') {
         res = await api.setting.getUserAgreement()
       } else if (this.data.type === 'privacy') {
-        res = await api.setting.getAboutUs()
+        res = await api.setting.getPrivacyPolicy()
       }
       
       if (res && res.code === 200) {

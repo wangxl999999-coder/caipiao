@@ -7,6 +7,8 @@
     "pages/news/news",
     "pages/login/login",
     "pages/mine/mine",
+    "pages/mine/about",
+    "pages/mine/agreement",
     "pages/chat/chat"
   ],
   "window": {
